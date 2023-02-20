@@ -1,0 +1,8 @@
+<div id="search-component">
+    <label for="search-box">Movie Search</label>
+    <input  #searchBox id="search-box" (keyup.enter)="search(searchBox.value)" />
+
+   
+</div>
+
+<app-movie-details [data]="movies"></app-movie-details>
