@@ -23,7 +23,9 @@ export class MovieSearchComponent {
   {
     this.movies.splice(0, this.movies.length);
     this.queryService.getData(query).subscribe((movies:any) => {
-      this.processResults(movies.results) })
+      this.processResults(movies.results) 
+     console.log(movies.results);
+     })
   }
 
   processResults(movies: any)
@@ -31,7 +33,7 @@ export class MovieSearchComponent {
 
   
     movies.forEach((element: any) => {
-      this.movies.push([element.title, element.id])
+      this.movies.push([element.title, element.id, element.overview, element.poster_path])
       }
       );
       console.log(this.movies)

@@ -1,6 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MovieResult } from '../movie-result';
 import { SharedService } from '../services/shared.service';
+
+
 
 @Component({
   selector: 'app-movie-details',
@@ -10,11 +12,17 @@ import { SharedService } from '../services/shared.service';
 export class MovieDetailsComponent  implements OnInit{
   
   @Input() data!: any;
-  constructor(protected  shared: SharedService){
+  @Output() movieId: EventEmitter<any> = new EventEmitter();
+  constructor(protected shared: SharedService){
 
   }
 
+  sendId(details: any)
+  {
+    this.movieId.emit(details);
+  }
   message: string = '';
+  
 
   ngOnInit(): void {
    

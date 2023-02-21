@@ -1,5 +1,26 @@
-<ul class="heroes">
-    <li *ngFor="let data of data">
-      <span class="badge">{{data[1]}}</span> {{data[0]}}
-    </li>
-</ul>
+ 
+    <div class="row" style="width: 1200px">
+      <div class="results" *ngFor="let data of data; let i = index">
+        <div  class="card movies" *ngIf="i<8" style="width: 12rem;  ">
+          <img class="card-img-top" src="https://image.tmdb.org/t/p/w500/{{data[3]}}" alt="Card image cap">
+          <div class="card-body">
+            <h3 class="card-title">{{data[0]}}</h3>
+            <a routerLink="/movies" (click)="sendId(data)" class="btn btn-primary" style="font-size: .4em;">See Connecting Movies</a>
+          
+        </div>
+      </div>
+    </div>
+  
+
+   
+<!--  <mat-card class="movies">
+        <mat-card-content>
+          <img mat-card-lg-image src="https://image.tmdb.org/t/p/w500/{{data[3]}}">
+          <mat-card-title-group>
+            
+            <mat-card-title>{{data[0]}}</mat-card-title>
+          </mat-card-title-group>
+          <mat-card-subtitle>{{data[2]}}</mat-card-subtitle>
+         
+        </mat-card-content>
+      </mat-card> -->
