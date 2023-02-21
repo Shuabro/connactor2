@@ -1,5 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { delay } from 'rxjs';
 import { MovieResult } from '../movie-result';
+import { MovieQueryService } from '../services/movie-query.service';
 import { SharedService } from '../services/shared.service';
 
 
@@ -12,19 +15,18 @@ import { SharedService } from '../services/shared.service';
 export class MovieDetailsComponent  implements OnInit{
   
   @Input() data!: any;
-  @Output() movieId: EventEmitter<any> = new EventEmitter();
-  constructor(protected shared: SharedService){
+  
+  constructor(private shared: SharedService, private movie: MovieQueryService){}
 
-  }
-
-  sendId(details: any)
+  sendId(details: any) 
   {
-    this.movieId.emit(details);
+    this.shared.sendMovieId(details)
+    console.log(details);
+    
   }
-  message: string = '';
+
   
 
   ngOnInit(): void {
-   
   }
 }

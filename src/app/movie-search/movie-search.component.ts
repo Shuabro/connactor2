@@ -7,7 +7,6 @@ import { SharedService } from '../services/shared.service';
 
 @Component({
   selector: 'app-movie-search',
-  providers: [SharedService],
   templateUrl: './movie-search.component.html',
   styleUrls: ['./movie-search.component.css']
 })
@@ -15,7 +14,7 @@ export class MovieSearchComponent {
   movies: any = [];
   
 
-  constructor(private queryService: MovieQueryService, private shared: SharedService){
+  constructor(private queryService: MovieQueryService){
     
   }
 
@@ -30,12 +29,11 @@ export class MovieSearchComponent {
 
   processResults(movies: any)
   {
-
-  
-    movies.forEach((element: any) => {
+      movies.forEach((element: any) => 
+      {
       this.movies.push([element.title, element.id, element.overview, element.poster_path])
-      }
-      );
+     
+      });
       console.log(this.movies)
  
   }

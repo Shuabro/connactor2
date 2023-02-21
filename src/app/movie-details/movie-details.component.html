@@ -5,7 +5,7 @@
           <img class="card-img-top" src="https://image.tmdb.org/t/p/w500/{{data[3]}}" alt="Card image cap">
           <div class="card-body">
             <h3 class="card-title">{{data[0]}}</h3>
-            <a routerLink="/movies" (click)="sendId(data)" class="btn btn-primary" style="font-size: .4em;">See Connecting Movies</a>
+            <button (click)="sendId(data[1])" class="m-l-2 btn btn-primary" style="font-size: .6em;">Connecting Movies</button>
           
         </div>
       </div>
