@@ -9,13 +9,8 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
   title = 'Connactor';
 
-  constructor(){
-    
-  }
+  constructor(){}
 
-
-  ngOnInit() {
-
-    
+  ngOnInit() {  
   }
 }

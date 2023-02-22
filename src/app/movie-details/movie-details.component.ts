@@ -12,20 +12,17 @@ import { SharedService } from '../services/shared.service';
   templateUrl: './movie-details.component.html',
   styleUrls: ['./movie-details.component.css']
 })
-export class MovieDetailsComponent  implements OnInit{
-  
-  @Input() data!: any;
-  
-  constructor(private shared: SharedService, private movie: MovieQueryService){}
+export class MovieDetailsComponent implements OnInit {
 
-  sendId(details: any) 
-  {
+  @Input() data!: any;
+
+  constructor(private shared: SharedService, private movie: MovieQueryService) { }
+
+  sendId(details: any) {
     this.shared.sendMovieId(details)
-    console.log(details);
-    
   }
 
-  
+
 
   ngOnInit(): void {
   }

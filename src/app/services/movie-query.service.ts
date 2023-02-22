@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http"
 
-import { MovieResult } from '../movie-result'
+import { IMovieDetails } from '../movie-details'
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +9,7 @@ import { MovieResult } from '../movie-result'
 export class MovieQueryService {
 
   constructor(
-    private http: HttpClient
-  ) { }
+    private http: HttpClient) {}
 
 
   getData(query : string)
@@ -19,10 +18,10 @@ export class MovieQueryService {
     return this.http.get(url);
   }
 
-  getMovie(query : string)
+  getMovie(query : number)
   {
-    let url = "https://api.themoviedb.org/3/movie/" + query + "?api_key=434577a472bbcc4c3d3154c77dd71ace&language=en-US";
-    return this.http.get(url);
+    let url = "https://api.themoviedb.org/3/movie/" + query.toString() + "?api_key=434577a472bbcc4c3d3154c77dd71ace&language=en-US";
+    return this.http.get<IMovieDetails>(url);
   }
   
 }

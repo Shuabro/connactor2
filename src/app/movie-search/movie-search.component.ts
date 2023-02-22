@@ -11,36 +11,25 @@ import { SharedService } from '../services/shared.service';
   styleUrls: ['./movie-search.component.css']
 })
 export class MovieSearchComponent {
-  movies: any = [];
-  
+  movies: any[] = [];
 
-  constructor(private queryService: MovieQueryService){
-    
-  }
 
-  search(query: string)
-  {
+  constructor(private queryService: MovieQueryService) {}
+
+  search(query: string) {
     this.movies.splice(0, this.movies.length);
-    this.queryService.getData(query).subscribe((movies:any) => {
-      this.processResults(movies.results) 
-     console.log(movies.results);
-     })
+    this.queryService.getData(query).subscribe((movies: any) => {console.log(movies);
+    
+      this.processResults(movies.results);
+    })
   }
 
-  processResults(movies: any)
-  {
-      movies.forEach((element: any) => 
-      {
+  processResults(movies: any) {
+    movies.forEach((element: any) => {
       this.movies.push([element.title, element.id, element.overview, element.poster_path])
-     
-      });
-      console.log(this.movies)
- 
+    });
   }
-  
 
-  ngOnInIt() : void
-  {
 
-  }
+  ngOnInIt(): void {}
 }
