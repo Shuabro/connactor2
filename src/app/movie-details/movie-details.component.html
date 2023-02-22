@@ -2,10 +2,10 @@
     <div class="row" style="width: 1200px">
       <div class="results" *ngFor="let data of data; let i = index">
         <div  class="card movies" *ngIf="i<8" style="width: 12rem;  ">
-          <img class="card-img-top" src="https://image.tmdb.org/t/p/w500/{{data[3]}}" alt="Card image cap">
+          <img class="card-img-top" src="https://image.tmdb.org/t/p/w500/{{data.poster_path}}" alt="Card image cap">
           <div class="card-body">
-            <h3 class="card-title">{{data[0]}}</h3>
-            <button (click)="sendId(data[1])" class="m-l-2 btn btn-primary" style="font-size: .6em;">Connecting Movies</button>
+            <h3 class="card-title">{{data.title}}</h3>
+            <button (click)="sendId(data.id)" class="m-l-2 btn btn-primary" style="font-size: .6em;">Movie Details</button>
           
         </div>
       </div>

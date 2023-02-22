@@ -11,14 +11,19 @@ import { IMovieDetails } from '../movie-details';
 })
 export class DashboardComponent implements OnInit {
 
+  //Subscription for subscribing to shared service to receive movieDetails
   movieDataSubscription: Subscription | undefined;
+
+  //Variable to hold movie ID sent from shared service, used to make api call to recieve movieDetails
   movieData!: number;
 
+  //variable that implements interface and hold movie information for selected movie
   movieDetails!: IMovieDetails;
 
   constructor(private _shared: SharedService, private _movie: MovieQueryService) { }
 
   ngOnInit(): void {
+    //Subscribe to shared service to retreive movie details
     this.movieDataSubscription = this._shared.movieId$.subscribe(d => {
       this.movieData = d;
       this.getMovieDetails(d);
@@ -33,7 +38,6 @@ export class DashboardComponent implements OnInit {
     this._movie.getMovie(data).subscribe(d => {
       this.movieDetails = d;
       console.log(this.movieDetails);
-      console.log(this.movieDetails.joshua);
       console.log(this.movieDetails.title);
       
     })

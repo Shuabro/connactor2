@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { MovieResult } from '../movie-result';
+import { IMovieResults, ResultsEntity } from '../movie-result';
 import { MovieQueryService } from '../services/movie-query.service';
 import { map } from 'rxjs';
 import { SharedService } from '../services/shared.service';
@@ -11,23 +11,26 @@ import { SharedService } from '../services/shared.service';
   styleUrls: ['./movie-search.component.css']
 })
 export class MovieSearchComponent {
-  movies: any[] = [];
+  movies!: ResultsEntity[] | null | undefined;
 
 
   constructor(private queryService: MovieQueryService) {}
 
   search(query: string) {
-    this.movies.splice(0, this.movies.length);
-    this.queryService.getData(query).subscribe((movies: any) => {console.log(movies);
-    
-      this.processResults(movies.results);
+    //this.movies.splice(0, this.movies.length);
+    this.queryService.getData(query).subscribe((d: IMovieResults) => {      
+      this.processResults(d.results);
     })
   }
 
-  processResults(movies: any) {
-    movies.forEach((element: any) => {
-      this.movies.push([element.title, element.id, element.overview, element.poster_path])
-    });
+  processResults(movieResults: ResultsEntity[] | null | undefined) {
+    
+    this.movies = movieResults
+
+
+    // movies.forEach((element: any) => {
+    //    this.movies.push([element.title, element.id, element.overview, element.poster_path])
+    // });
   }
 
 

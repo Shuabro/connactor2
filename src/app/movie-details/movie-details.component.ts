@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { delay } from 'rxjs';
-import { MovieResult } from '../movie-result';
+import { IMovieResults, ResultsEntity } from '../movie-result';
 import { MovieQueryService } from '../services/movie-query.service';
 import { SharedService } from '../services/shared.service';
 
@@ -14,15 +13,13 @@ import { SharedService } from '../services/shared.service';
 })
 export class MovieDetailsComponent implements OnInit {
 
-  @Input() data!: any;
+  @Input() data!: ResultsEntity[] | null | undefined;
 
   constructor(private shared: SharedService, private movie: MovieQueryService) { }
 
   sendId(details: any) {
     this.shared.sendMovieId(details)
   }
-
-
 
   ngOnInit(): void {
   }
