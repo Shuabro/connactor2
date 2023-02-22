@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { IMovieResults, ResultsEntity } from '../movie-result';
+import { IMovieResults, ResultsEntity } from '../movie-results';
 import { MovieQueryService } from '../services/movie-query.service';
 import { SharedService } from '../services/shared.service';
 

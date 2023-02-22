@@ -11,7 +11,7 @@ export interface IMovieDetails {
     original_title: string;
     overview: string;
     popularity: number;
-    poster_path: string;
+    poster_path?: string | undefined;
     production_companies?: (ProductionCompaniesEntity)[] | null;
     production_countries?: (ProductionCountriesEntity)[] | null;
     release_date: string;

@@ -1,2 +1,12 @@
-<h1>{{movieData}}</h1>
-
+<div>
+    <div>
+        <!-- Checks to make sure movieDetails is true before populating values -->
+        <span *ngIf="movieDetails">
+            <img src="https://image.tmdb.org/t/p/w500/{{movieDetails.poster_path}}"
+                style="width:13em; height:15em;" alt="" i>
+            <h1>{{movieDetails.title}}</h1>
+            <h3>{{movieDetails.tagline}}</h3>
+            <p>{{movieDetails.overview}}</p>
+        </span>
+    </div>
+</div>

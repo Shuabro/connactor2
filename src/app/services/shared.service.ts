@@ -8,7 +8,7 @@ import { ReplaySubject } from 'rxjs';
 })
 export class SharedService {
 
-  public movieId$ = new Subject<number>();
+  public movieId$ = new BehaviorSubject<number>(1);
 
   constructor() {}
   

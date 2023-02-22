@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { MovieSearchComponent } from './movie-search/movie-search.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { AppRoutingModule } from './app-routing.module';
 
  
 @NgModule({
@@ -21,6 +22,7 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
     BrowserModule,
     HttpClientModule,
     MatCardModule,
+    AppRoutingModule
     
   ],
   providers: [],

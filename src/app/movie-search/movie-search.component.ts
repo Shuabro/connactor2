@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IMovieResults, ResultsEntity } from '../movie-result';
+import { IMovieResults, ResultsEntity } from '../movie-results';
 import { MovieQueryService } from '../services/movie-query.service';
 import { map } from 'rxjs';
 import { SharedService } from '../services/shared.service';
