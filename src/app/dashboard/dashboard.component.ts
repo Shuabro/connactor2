@@ -1,9 +1,12 @@
+// Make a note of the connecting actor
+
+
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MovieQueryService } from '../services/movie-query.service';
 import { SharedService } from '../services/shared.service';
 import { IMovieDetails } from '../movie-details';
-import { IMovieCredits } from '../movie-credits';
+import { CastEntity, IMovieCredits } from '../movie-credits';
 
 @Component({
   selector: 'app-dashboard',
@@ -27,8 +30,8 @@ export class DashboardComponent implements OnInit {
   //Subscription for subscribing to shared service to receive movieCredits
   movieCreditsSubscription: Subscription | undefined;
 
-   //variable that implements interface and hold credit information for selected movie
-  movieCredits!: IMovieCredits;
+  //variable that implements interface and hold credit information for selected movie
+  movieCredits!: CastEntity[] | null | undefined;
 
   constructor(private _shared: SharedService, private _movie: MovieQueryService) { }
 
@@ -46,18 +49,25 @@ export class DashboardComponent implements OnInit {
 
     //Subscribe to shared service to retreive movie credits
     this.movieCreditsSubscription = this._movie.getCredits(this.movieData).subscribe(c => {
-      this.movieCredits = c;
-      console.log(c);
-      
-
+      this.movieCredits = c.cast;
+      this.displayConnectedMovies(this.movieCredits);
     })
+
+    
 
 
   }
+
+  displayConnectedMovies(credits : any) {
+    console.log(credits);
+    
+
+  };
+
 
   ngOnDestory() {
     this.movieDataSubscription?.unsubscribe();
     this.movieCreditsSubscription?.unsubscribe();
-  }
+  };
 
 }

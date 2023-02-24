@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, ReplaySubject, Subscription } from 'rxjs';
 import { IMovieResults, ResultsEntity } from '../movie-results';
 import { MovieQueryService } from '../services/movie-query.service';
-import { map } from 'rxjs';
 import { SharedService } from '../services/shared.service';
 
 @Component({
@@ -10,29 +9,24 @@ import { SharedService } from '../services/shared.service';
   templateUrl: './movie-search.component.html',
   styleUrls: ['./movie-search.component.css']
 })
-export class MovieSearchComponent {
+export class MovieSearchComponent implements OnInit {
   movies!: ResultsEntity[] | null | undefined;
 
+  searchDataSubscription:  Subscription | undefined;
 
   constructor(private queryService: MovieQueryService) {}
+  ngOnInit(): void {
+  }
 
   search(query: string) {
-    //this.movies.splice(0, this.movies.length);
-    this.queryService.getData(query).subscribe((d: IMovieResults) => {      
-      this.processResults(d.results);
+    this.searchDataSubscription = this.queryService.getData(query).subscribe((d: IMovieResults) => {      
+      this.movies = d.results;
+     
     })
   }
 
-  processResults(movieResults: ResultsEntity[] | null | undefined) {
-    
-    this.movies = movieResults
-
-
-    // movies.forEach((element: any) => {
-    //    this.movies.push([element.title, element.id, element.overview, element.poster_path])
-    // });
+  ngOnDestroy(){
+    this.searchDataSubscription?.unsubscribe();
   }
 
-
-  ngOnInIt(): void {}
 }

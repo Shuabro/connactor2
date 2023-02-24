@@ -3,6 +3,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IMovieResults, ResultsEntity } from '../movie-results';
 import { MovieQueryService } from '../services/movie-query.service';
 import { SharedService } from '../services/shared.service';
+import { ReplaySubject  } from 'rxjs';
 
 
 
@@ -11,7 +12,7 @@ import { SharedService } from '../services/shared.service';
   templateUrl: './movie-details.component.html',
   styleUrls: ['./movie-details.component.css']
 })
-export class MovieDetailsComponent implements OnInit {
+export class MovieDetailsComponent  {
 
   @Input() data!: ResultsEntity[] | null | undefined;
 
@@ -21,6 +22,5 @@ export class MovieDetailsComponent implements OnInit {
     this.shared.sendMovieId(details)
   }
 
-  ngOnInit(): void {
-  }
+  
 }

@@ -1,9 +1,9 @@
-<div id="search-component">
-    <label for="search-box">Movie Search</label>
-    <input spellcheck="false" #searchBox id="search-box" (keyup.enter)="search(searchBox.value)" />
-
-   
+<div class="container mt-4 ">
+    <div id="search-component">
+        <label for="search-box">Movie Search</label>
+        <input spellcheck="false" #searchBox id="search-box" (keyup.enter)="search(searchBox.value)" />
+    </div>
+    <div class="d-flex justify-content-center mt-4">
+        <app-movie-details [data]="movies"></app-movie-details>
+    </div>
 </div>
-
-<app-movie-details  [data]="movies"></app-movie-details>
-

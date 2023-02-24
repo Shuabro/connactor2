@@ -1,0 +1,17 @@
+<div class="overflow-auto" style="max-height: 25em;">
+    <div class="p-3">
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let credit of credits; let i = index">
+
+                <input class="form-check-input me-2" 
+                       #checkbox type="checkbox" 
+                       value="" 
+                       id="{{credits[i].id}}"
+                       [(ngModel)]="checkbox.checked"/>
+                <label for="">{{credits[i].name}} - <span class="text-muted">{{credits[i].character}}</span></label>
+
+
+            </li>
+        </ul>
+    </div>
+</div>
