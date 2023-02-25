@@ -14,11 +14,16 @@ export class MovieSearchComponent implements OnInit {
 
   searchDataSubscription:  Subscription | undefined;
 
+  lastSearch:string = '';
+
   constructor(private queryService: MovieQueryService) {}
   ngOnInit(): void {
+   
+
   }
 
   search(query: string) {
+    
     this.searchDataSubscription = this.queryService.getData(query).subscribe((d: IMovieResults) => {      
       this.movies = d.results;
      

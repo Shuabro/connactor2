@@ -7,6 +7,7 @@ export interface IMovieCredits {
     adult: boolean;
     gender: number;
     id: number;
+    isChecked: boolean;
     known_for_department: string;
     name: string;
     original_name: string;
