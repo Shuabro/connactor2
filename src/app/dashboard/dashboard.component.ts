@@ -50,7 +50,7 @@ export class DashboardComponent implements OnInit {
     //Subscribe to shared service to retreive movie credits
     this.movieCreditsSubscription = this._movie.getCredits(this.movieData).subscribe(c => {
       this.movieCredits = c.cast;
-      this.displayConnectedMovies(this.movieCredits);
+      
     })
 
     
@@ -58,11 +58,7 @@ export class DashboardComponent implements OnInit {
 
   }
 
-  displayConnectedMovies(credits : any) {
-    console.log(credits);
-    
-
-  };
+ 
 
 
   ngOnDestory() {

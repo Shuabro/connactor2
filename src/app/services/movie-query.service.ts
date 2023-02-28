@@ -30,4 +30,11 @@ export class MovieQueryService {
     return this.http.get<IMovieCredits>(url);
   }
 
+
+
+  getConnectedMovies(query: number) {
+    let url = "https://api.themoviedb.org/3/discover/movie?api_key=434577a472bbcc4c3d3154c77dd71ace&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_cast=" + query + "&with_watch_monetization_types=flatrate";
+    return this.http.get(url);
+  }
+
 }
